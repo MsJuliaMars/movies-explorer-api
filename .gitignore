@@ -14,5 +14,9 @@ node_modules
 .idea
 .vscode
 
+#git
+git
+git/
+
 # keys
 .env
