@@ -1,9 +1,9 @@
 module.exports.options = {
   origin: [
-    // 'https://mesto.kozhevnikova.nomoredomains.work',
-    // 'http://mesto.kozhevnikova.nomoredomains.work',
-    // 'http://localhost:3000',
-    // 'localhost:3000',
+    'https://movies.kozhevnikova.nomoredomains.monster',
+    'http://movies.kozhevnikova.nomoredomains.monster',
+    'http://localhost:3000',
+    'localhost:3000',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,

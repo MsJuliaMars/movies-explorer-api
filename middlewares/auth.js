@@ -1,5 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 const jwt = require('jsonwebtoken');
+
+const { JWT_SECRET } = process.env;
 const {
   MESSAGE,
 } = require('../utils/constantsError');
@@ -21,7 +23,7 @@ module.exports = (req, res, next) => {
   let payload;
   try {
     // попытаемся верифицировать токен
-    payload = jwt.verify(token, 'some-secret-key');
+    payload = jwt.verify(token, process.env.NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
   } catch (err) {
     // отправим ошибку если не получится
     return next(new UnauthorizedError(MESSAGE.ERROR_UNAUTHORIZED));

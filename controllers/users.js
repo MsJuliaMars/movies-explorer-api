@@ -6,6 +6,8 @@ const NotFound = require('../errors/NotFound');
 const BadRequestError = require('../errors/BadRequestError');
 const ConflictError = require('../errors/ConflictError');
 
+const { JWT_SECRET } = process.env;
+
 // POST /signup - создаёт пользователя с переданными в теле (email, password и name)
 const createUser = (req, res, next) => {
   const {
@@ -72,7 +74,7 @@ const login = (req, res, next) => {
   } = req.body;
   return User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, 'some-secret-key', { expiresIn: '7d' });
+      const token = jwt.sign({ _id: user._id }, process.env.NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
       res.status(STATUS_CODE.OK)
         .send({
           message: MESSAGE.SUCCESS_AUTH,
