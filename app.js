@@ -17,10 +17,11 @@ const { corsOptions } = require('./utils/corsOptions');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFound = require('./errors/NotFound');
 const limiter = require('./utils/rateLimit');
+const { MONGO_DB } = require('./utils/const');
 
 // Слушаем 3000 порт
 const { PORT = 3001 } = process.env;
-mongoose.connect('mongodb://localhost:27017/bitfilmsdb', {});
+mongoose.connect(MONGO_DB, {});
 
 const app = express();
 app.use(helmet());
