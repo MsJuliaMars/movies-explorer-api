@@ -2,15 +2,10 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 
-// eslint-disable-next-line import/no-extraneous-dependencies
 const bodyParser = require('body-parser');
-// eslint-disable-next-line import/no-extraneous-dependencies
 const cookieParser = require('cookie-parser');
-// eslint-disable-next-line import/no-extraneous-dependencies
 const cors = require('cors');
-// eslint-disable-next-line import/no-extraneous-dependencies
 const { errors } = require('celebrate');
-// eslint-disable-next-line import/no-extraneous-dependencies
 const helmet = require('helmet');
 
 const usersRouter = require('./routes/users');
