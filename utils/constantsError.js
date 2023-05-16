@@ -24,6 +24,7 @@ module.exports.MESSAGE = {
   ERROR_CREATE_LIKE: 'Передан несуществующий _id фильма',
   ERROR_NOT_LIKE: 'Переданы некорректные данные для постановки/снятии лайка',
   ERROR_CONFLICT_EMAIL: 'Вы пытаетесь зарегистриировать вторую учетную запись на тот же email',
+  ERROR_CONFLICT_UPDATE_EMAIL: 'Данный email уже существует',
   ERROR_CONFLICT_CARD: 'Вы пытветесь удалить фильм другого пользователя',
   ERROR_UNAUTHORIZED: 'Необходима авторизация',
   SUCCESS_AUTH: 'Вы успешно автризировались',

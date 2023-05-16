@@ -60,6 +60,8 @@ const updateUser = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError(MESSAGE.ERROR_UPDATE_PROFILE));
+      } else if (err.code === 11000) {
+        next(new ConflictError(MESSAGE.ERROR_CONFLICT_UPDATE_EMAIL));
       } else {
         next(err);
       }

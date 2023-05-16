@@ -6,7 +6,7 @@ const BadRequestError = require('../errors/BadRequestError');
 
 // GET /movies - возвращает все сохранённые текущим  пользователем фильмы
 const getMovie = (req, res, next) => {
-  Movie.find({})
+  Movie.find({ owner: req.user._id })
     .populate(['owner'])
     .then((movies) => res.status(STATUS_CODE.OK).send(movies))
     .catch(next);
