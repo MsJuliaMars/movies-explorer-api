@@ -8,10 +8,7 @@ const cors = require('cors');
 const { errors } = require('celebrate');
 const helmet = require('helmet');
 
-const usersRouter = require('./routes/users');
 const routes = require('./routes/index');
-const routesMovies = require('./routes/movies');
-const auth = require('./middlewares/auth');
 const handleError = require('./middlewares/handleError');
 const { corsOptions } = require('./utils/corsOptions');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -35,9 +32,6 @@ app.use(requestLogger);
 app.use(limiter);
 
 app.use(routes);
-app.use(auth);
-app.use('/', usersRouter);
-app.use('/', routesMovies);
 
 // Обработка неправильного пути '*'
 app.use('*', (req, res, next) => {
@@ -46,6 +40,4 @@ app.use('*', (req, res, next) => {
 app.use(errorLogger);
 app.use(errors()); // обработчик ошибок celebrate
 app.use(handleError);
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}`);
-});
+app.listen(PORT);
